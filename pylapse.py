@@ -10,7 +10,7 @@
 import os
 import time
 import copy
-from subprocess import Popen, PIPE
+import datetime
 
 # Setup
 script_name = os.path.basename(__file__)
@@ -22,7 +22,7 @@ image_height = 1000
 base_filename = 'image_'
 output_path = './output/'
 number_of_images = 10
-time_between_images = 0.1
+time_between_images = 0.05
 
 # Debug info
 print 'Parameters'
@@ -38,11 +38,13 @@ print
 # Main
 print 'Starting main...'
 capture_cmd = 'raspistill -t 1 -w %s -h %s -o %s' % ( str(image_width), str(image_height), output_path + base_filename)
+print 'Start time: %s' % ( str(datetime.datetime.now()) )
 for i in range(number_of_images):
     print 'Capturing image: %d' % (i+1)
     cmd = capture_cmd + str(i+1) + '.jpg'
     print 'Running command: %s' % (cmd)
     os.system(cmd)
+    print 'Capture time: %s' % ( str(datetime.datetime.now()) )
     time.sleep(time_between_images)
 
 print 'Finished main.'
