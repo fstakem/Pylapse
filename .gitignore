@@ -8,6 +8,10 @@ gen/
 proguard.cfg
 project.properties
 
+# Dirs #
+########
+output/
+
 # Compiled source #
 ###################
 *.com
